@@ -31,6 +31,10 @@ class App(customtkinter.CTk):
         self.main_button_1 = customtkinter.CTkButton(self, border_width=2, text_color=("gray10", "#DCE4EE"),text="Save as",width=170,height=50, command=saveTo)
         self.main_button_1.grid(row=0, column=3, padx=(0, 370), pady=(0, 300))
 
+        self.Show_Spectrogram = customtkinter.CTkButton(self, border_width=2, text_color=("gray10", "#DCE4EE"),text="Show Spectrogram",width=170,height=50)
+        self.Show_Spectrogram.grid(row=0, column=3, padx=(0, 370), pady=(0, 100))
+        
+
         #General Frame
 
         self.General_frame = customtkinter.CTkFrame(self)
