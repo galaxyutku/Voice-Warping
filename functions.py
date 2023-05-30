@@ -6,6 +6,7 @@ import librosa
 import librosa.display
 import IPython.display as ipd
 import soundfile as sf
+from PIL import Image
 from itertools import cycle
 import scipy
 from scipy import signal
@@ -315,6 +316,39 @@ def changeAudio(isAllpass, isComb, isEcho, isReverbed, isChorus, isFlanger, isVi
     if isEQ == 1:
         processed_data, Sampl_rate = test_eq(processed_data, Sampl_rate, hz_32, hz_63, hz_125, hz_250, hz_500, hz_1000, hz_2000, hz_4000, hz_8000, hz_16000)
     sf.write("audios/results/LASTRESULTAUDIO.wav", processed_data, Sampl_rate)
+
+def showGraphs():
+    im = Image.open('graphs/logmel.png')
+    im.show()
+    im2 = Image.open('graphs/waveform.png')
+    im2.show()
+
+def logmelSave():
+    y, sr = librosa.load('audios/results/LASTRESULTAUDIO.wav')
+    n_fft=1024
+
+    hop_length=320
+
+    window_type ='hann'
+
+    mel_bins = 64
+    Mel_spectrogram = librosa.feature.melspectrogram(y=y, sr=sr, n_fft=n_fft, hop_length=hop_length, win_length=n_fft, window=window_type, n_mels = mel_bins, power=2.0)
+    mel_spectrogram_db = librosa.power_to_db(Mel_spectrogram, ref=np.max)
+    librosa.display.specshow(mel_spectrogram_db, sr=sr, x_axis='time', y_axis='mel',hop_length=hop_length)
+    plt.colorbar(format='%+2.0f dB')
+    plt.title('Log Mel spectrogram')
+    plt.tight_layout()
+    plt.savefig('graphs/logmel.png')
+    plt.clf()
+    plt.close()
+
+def waveFormSave():
+    y, sr = librosa.load('audios/results/LASTRESULTAUDIO.wav')
+    fig, ax = plt.subplots(figsize=(14,4))
+    librosa.display.waveshow(y=y, sr=sr, ax=ax)
+    fig.savefig('graphs/waveform.png')
+    fig.clf()
+    plt.close()
 
 def play():
     pygame.mixer.init()
