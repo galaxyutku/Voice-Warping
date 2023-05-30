@@ -316,6 +316,8 @@ def changeAudio(isAllpass, isComb, isEcho, isReverbed, isChorus, isFlanger, isVi
     if isEQ == 1:
         processed_data, Sampl_rate = test_eq(processed_data, Sampl_rate, hz_32, hz_63, hz_125, hz_250, hz_500, hz_1000, hz_2000, hz_4000, hz_8000, hz_16000)
     sf.write("audios/results/LASTRESULTAUDIO.wav", processed_data, Sampl_rate)
+    waveFormSave()
+    logmelSave()
 
 def showGraphs():
     im = Image.open('graphs/logmel.png')
