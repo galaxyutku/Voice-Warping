@@ -86,7 +86,7 @@ class App(customtkinter.CTk):
         self.text = customtkinter.CTkLabel(self.Slider_frame_horizontal, text="White Noise", text_color="#fff", width=250, anchor="w", font=("Arial", 17))
         self.text.grid(row=0, column=0,padx=(10,0),pady=(10,0), sticky="nsew")
 
-        self.slider = customtkinter.CTkSlider(self.Slider_frame_horizontal, orientation='horizontal', from_=0, to=0.05, variable=currentWNoise, command=lambda event:strcurrentWNoise.set(f"{currentWNoise.get():.3f}"))
+        self.slider = customtkinter.CTkSlider(self.Slider_frame_horizontal, orientation='horizontal', from_=0, to=0.05, variable=currentWNoise, command=lambda event:[self.text_whitenoise.configure(textvariable=strcurrentWNoise), strcurrentWNoise.set(f"{currentWNoise.get():.3f}")])
         self.slider.grid(row=1, column=0,  sticky="ew")
         self.text_whitenoise = customtkinter.CTkLabel(self.Slider_frame_horizontal, textvariable=strcurrentWNoise)
         self.text_whitenoise.grid(row=2, column=0,padx=(0,0),pady=(0,0))
@@ -96,7 +96,7 @@ class App(customtkinter.CTk):
         self.text.grid(row=3, column=0,padx=(0,0), sticky="nsew")
 
         
-        self.slider_2 = customtkinter.CTkSlider(self.Slider_frame_horizontal, orientation='horizontal', from_=0.5, to=2, variable=currentStrecth, command=lambda event:strcurrentStrecth.set(f"{currentStrecth.get():.3f}"))
+        self.slider_2 = customtkinter.CTkSlider(self.Slider_frame_horizontal, orientation='horizontal', from_=0.5, to=2, variable=currentStrecth, command=lambda event:[self.text_stretch.configure(textvariable=strcurrentStrecth), strcurrentStrecth.set(f"{currentStrecth.get():.3f}")])
         self.slider_2.set(1)
         self.slider_2.grid(row=4, column=0,  sticky="ew")
 
@@ -106,7 +106,7 @@ class App(customtkinter.CTk):
         #Pitch
         self.text = customtkinter.CTkLabel(self.Slider_frame_horizontal, text="Pitch", text_color="#fff", width=250,justify="left", anchor="w", font=("Arial", 17))
         self.text.grid(row=6, column=0,padx=(10,0), sticky="nsew")
-        self.slider_3 = customtkinter.CTkSlider(self.Slider_frame_horizontal, orientation='horizontal', from_=-10, to=10, variable=currentPitch, command=lambda event:strcurrentPitch.set(f"{currentPitch.get():.3f}"))
+        self.slider_3 = customtkinter.CTkSlider(self.Slider_frame_horizontal, orientation='horizontal', from_=-10, to=10, variable=currentPitch, command=lambda event:[self.text_pitch.configure(textvariable=strcurrentPitch), strcurrentPitch.set(f"{currentPitch.get():.3f}")])
         self.slider_3.set(0)
         self.slider_3.grid(row=7, column=0, sticky="ew")
 
@@ -116,7 +116,7 @@ class App(customtkinter.CTk):
         #Harmonic
         self.text = customtkinter.CTkLabel(self.Slider_frame_horizontal, text="Harmonic", text_color="#fff", width=250,justify="center", anchor="w", font=("Arial", 17))
         self.text.grid(row=10, column=0,padx=(10,0), sticky="nsew")
-        self.slider_4 = customtkinter.CTkSlider(self.Slider_frame_horizontal, orientation='horizontal', from_=-10, to=10, variable=currentHarmonic,command=lambda event:strcurrentHarmonic.set(f"{currentHarmonic.get():.3f}"))
+        self.slider_4 = customtkinter.CTkSlider(self.Slider_frame_horizontal, orientation='horizontal', from_=-10, to=10, variable=currentHarmonic,command=lambda event:[self.text_harmonic.configure(textvariable=strcurrentHarmonic),strcurrentHarmonic.set(f"{currentHarmonic.get():.3f}")])
         self.slider_4.set(1)
         self.slider_4.grid(row=11, column=0, sticky="ew")
         self.text_harmonic = customtkinter.CTkLabel(self.Slider_frame_horizontal, textvariable=strcurrentHarmonic)
@@ -125,7 +125,7 @@ class App(customtkinter.CTk):
         #Percussive
         self.text = customtkinter.CTkLabel(self.Slider_frame_horizontal, text="Percussive", text_color="#fff", width=250,justify="center", anchor="w", font=("Arial", 17))
         self.text.grid(row=13,column=0,padx=(10,0), sticky="nsew")
-        self.slider_5 = customtkinter.CTkSlider(self.Slider_frame_horizontal, orientation='horizontal', from_=-10, to=10, variable=currentPercussive,command=lambda event:strcurrentPercussive.set(f"{currentPercussive.get():.3f}"))
+        self.slider_5 = customtkinter.CTkSlider(self.Slider_frame_horizontal, orientation='horizontal', from_=-10, to=10, variable=currentPercussive,command=lambda event:[self.text_percussive.configure(textvariable=strcurrentPercussive),strcurrentPercussive.set(f"{currentPercussive.get():.3f}")])
         self.slider_5.set(1)
         self.slider_5.grid(row=14, column=0, sticky="ew")
         self.text_percussive = customtkinter.CTkLabel(self.Slider_frame_horizontal, textvariable=strcurrentPercussive)
@@ -152,56 +152,56 @@ class App(customtkinter.CTk):
         #32hz
         self.text_hz_32 = customtkinter.CTkLabel(self.Slider_frame_Equalizer, textvariable=strhz_32)
         self.text_hz_32.grid(row=1, column=0,padx=(30,0),pady=(0,230))
-        self.eqslider_1 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_32, command=lambda event:strhz_32.set(f"{hz_32.get():.1f}"))
+        self.eqslider_1 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_32, command=lambda event:[self.text_hz_32.configure(textvariable=strhz_32) ,strhz_32.set(f"{hz_32.get():.1f}")])
         self.eqslider_1.grid(row=1, column=0, padx=(30, 0), pady=(10, 10))
         self.text = customtkinter.CTkLabel(self.Slider_frame_Equalizer, text="32hz")
         self.text.grid(row=2, column=0,padx=(30,0),pady=(0,0))
         #63hz
         self.text_hz_63 = customtkinter.CTkLabel(self.Slider_frame_Equalizer, textvariable=strhz_63)
         self.text_hz_63.grid(row=1, column=1,padx=(0,40),pady=(0,230))
-        self.eqslider_2 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_63, command=lambda event:strhz_63.set(f"{hz_63.get():.1f}"))
+        self.eqslider_2 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_63, command=lambda event:[self.text_hz_63.configure(textvariable=strhz_63) ,strhz_63.set(f"{hz_63.get():.1f}")])
         self.eqslider_2.grid(row=1, column=1, padx=(0, 40), pady=(10, 10))
         self.text = customtkinter.CTkLabel(self.Slider_frame_Equalizer, text="63hz")
         self.text.grid(row=2, column=1,padx=(0,40),pady=(0,0))
         #125hz
         self.text_hz_125 = customtkinter.CTkLabel(self.Slider_frame_Equalizer, textvariable=strhz_125)
         self.text_hz_125.grid(row=1, column=2,padx=(0,40),pady=(0,230))
-        self.eqslider_3 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_125, command=lambda event:strhz_125.set(f"{hz_125.get():.1f}"))
+        self.eqslider_3 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_125, command=lambda event:[self.text_hz_125.configure(textvariable=strhz_125), strhz_125.set(f"{hz_125.get():.1f}")])
         self.eqslider_3.grid(row=1, column=2, padx=(0, 40), pady=(10, 10))
         self.text = customtkinter.CTkLabel(self.Slider_frame_Equalizer, text="125hz")
         self.text.grid(row=2, column=2,padx=(0,40),pady=(0,0))
         #250hz
         self.text_hz_250 = customtkinter.CTkLabel(self.Slider_frame_Equalizer, textvariable=strhz_250)
         self.text_hz_250.grid(row=1, column=3,padx=(0,40),pady=(0,230))
-        self.eqslider_4 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_250, command=lambda event:strhz_250.set(f"{hz_250.get():.1f}"))
+        self.eqslider_4 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_250, command=lambda event:[self.text_hz_250.configure(textvariable=strhz_250),strhz_250.set(f"{hz_250.get():.1f}")])
         self.eqslider_4.grid(row=1, column=3, padx=(0, 40), pady=(10, 10))
         self.text = customtkinter.CTkLabel(self.Slider_frame_Equalizer, text="250hz")
         self.text.grid(row=2, column=3,padx=(0,40),pady=(0,0))
         #500hz
         self.text_hz_500 = customtkinter.CTkLabel(self.Slider_frame_Equalizer, textvariable=strhz_500)
         self.text_hz_500.grid(row=1, column=4,padx=(0,40),pady=(0,230))
-        self.eqslider_5 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_500, command=lambda event:strhz_500.set(f"{hz_500.get():.1f}"))
+        self.eqslider_5 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_500, command=lambda event:[self.text_hz_500.configure(textvariable=strhz_500), strhz_500.set(f"{hz_500.get():.1f}")])
         self.eqslider_5.grid(row=1, column=4, padx=(0, 40), pady=(10, 10))
         self.text = customtkinter.CTkLabel(self.Slider_frame_Equalizer, text="500hz")
         self.text.grid(row=2, column=4,padx=(0,40),pady=(0,0))
         #1000hz
         self.text_hz_1000 = customtkinter.CTkLabel(self.Slider_frame_Equalizer, textvariable=strhz_1000)
         self.text_hz_1000.grid(row=1, column=5,padx=(0,40),pady=(0,230))
-        self.eqslider_6 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_1000, command= lambda event:strhz_1000.set(f"{hz_1000.get():.1f}"))
+        self.eqslider_6 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_1000, command= lambda event:[self.text_hz_1000.configure(textvariable=strhz_1000), strhz_1000.set(f"{hz_1000.get():.1f}")])
         self.eqslider_6.grid(row=1, column=5, padx=(0, 40), pady=(10, 10))
         self.text = customtkinter.CTkLabel(self.Slider_frame_Equalizer, text="1khz")
         self.text.grid(row=2, column=5,padx=(0,40),pady=(0,0))
         #2000hz
         self.text_hz_2000 = customtkinter.CTkLabel(self.Slider_frame_Equalizer, textvariable=strhz_2000)
         self.text_hz_2000.grid(row=1, column=6,padx=(0,40),pady=(0,230))
-        self.eqslider_7 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_2000, command=lambda event:strhz_2000.set(f"{hz_2000.get():.1f}"))
+        self.eqslider_7 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_2000, command=lambda event:[self.text_hz_2000.configure(textvariable=strhz_2000), strhz_2000.set(f"{hz_2000.get():.1f}")])
         self.eqslider_7.grid(row=1, column=6, padx=(0, 40), pady=(10, 10))
         self.text = customtkinter.CTkLabel(self.Slider_frame_Equalizer, text="2khz")
         self.text.grid(row=2, column=6,padx=(0,40),pady=(0,0))
         #4000hz
         self.text_hz_4000 = customtkinter.CTkLabel(self.Slider_frame_Equalizer, textvariable=strhz_4000)
         self.text_hz_4000.grid(row=1, column=7,padx=(0,40),pady=(0,230))
-        self.eqslider_8 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_4000, command=lambda event:strhz_4000.set(f"{hz_4000.get():.1f}"))
+        self.eqslider_8 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_4000, command=lambda event:[self.text_hz_4000.configure(textvariable=strhz_4000), strhz_4000.set(f"{hz_4000.get():.1f}")])
         self.eqslider_8.grid(row=1, column=7, padx=(0, 40), pady=(10, 10))
 
         self.text = customtkinter.CTkLabel(self.Slider_frame_Equalizer, text="4khz")
@@ -209,7 +209,7 @@ class App(customtkinter.CTk):
         #8000hz
         self.text_hz_8000 = customtkinter.CTkLabel(self.Slider_frame_Equalizer, textvariable=strhz_8000)
         self.text_hz_8000.grid(row=1, column=8,padx=(0,40),pady=(0,230))
-        self.eqslider_9 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_8000, command= lambda event:strhz_8000.set(f"{hz_8000.get():.1f}"))
+        self.eqslider_9 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_8000, command= lambda event:[self.text_hz_8000.configure(textvariable=strhz_8000), strhz_8000.set(f"{hz_8000.get():.1f}")])
         self.eqslider_9.grid(row=1, column=8, padx=(0, 40), pady=(10, 10))
 
         self.text = customtkinter.CTkLabel(self.Slider_frame_Equalizer, text="8khz")
@@ -217,7 +217,7 @@ class App(customtkinter.CTk):
         #16000hz
         self.text_hz_16000 = customtkinter.CTkLabel(self.Slider_frame_Equalizer, textvariable=strhz_16000)
         self.text_hz_16000.grid(row=1, column=9,padx=(0,40),pady=(0,230))
-        self.eqslider_10 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_16000,command=lambda event:strhz_16000.set(f"{hz_16000.get():.1f}"))
+        self.eqslider_10 = customtkinter.CTkSlider(self.Slider_frame_Equalizer, orientation="vertical", from_=-20, to=20, variable=hz_16000,command=lambda event:[self.text_hz_16000.configure(textvariable=strhz_16000), strhz_16000.set(f"{hz_16000.get():.1f}")])
         self.eqslider_10.grid(row=1, column=9, padx=(0, 40), pady=(10, 10))
 
         self.text = customtkinter.CTkLabel(self.Slider_frame_Equalizer, text="16khz")
